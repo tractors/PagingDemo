@@ -14,14 +14,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private Button buttonPopulate, buttonClear;
     StudentDao studentDao;
-    StudentDatabase studentDatabase;
+    StudentsDatabase studentDatabase;
     private MyPagedAdapter pagedAdapter;
 
     private LiveData<PagedList<Student>> allStudentLivePaged;
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(pagedAdapter);
 
 
-        studentDatabase = StudentDatabase.getInstance(this);
+        studentDatabase = StudentsDatabase.getInstance(this);
         studentDao = studentDatabase.getStudentDao();
 
         allStudentLivePaged = new LivePagedListBuilder<>(studentDao.getAllStudents(),30).build();

@@ -7,18 +7,15 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(entities = {Student.class},version = 1,exportSchema = false)
-public abstract class StudentDatabase extends RoomDatabase {
-    private static volatile StudentDatabase instance;
+public abstract class StudentsDatabase extends RoomDatabase {
+    private static volatile StudentsDatabase instance;
     static final Byte[] bytes = new Byte[9];
 
-    private StudentDatabase() {
-    }
-
-    static StudentDatabase getInstance(Context context){
+    static StudentsDatabase getInstance(Context context){
         if (instance == null){
             synchronized (bytes){
                 if (instance == null){
-                    instance = Room.databaseBuilder(context,StudentDatabase.class,"students_database").build();
+                    instance = Room.databaseBuilder(context, StudentsDatabase.class,"students_database").build();
                 }
             }
         }
